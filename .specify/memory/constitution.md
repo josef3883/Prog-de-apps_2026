@@ -1,50 +1,63 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version: scaffold sin ratificar -> 1.0.0 (constitución inicial)
+Modified principles: constitución inicial; definidos I. Calidad de código (SOLID), II. Arquitectura por capas, III. Seguridad, IV. Calidad y pruebas, V. Regla de la materia
+Added sections: Restricciones del proyecto; Flujo de desarrollo y revisión
+Removed sections: ninguna
+Follow-up TODOs: fecha original de ratificación desconocida; completar al ratificar
+-->
+# División de Cuenta Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Calidad de código (SOLID)
+Cada clase DEBE tener una sola razón de cambio (SRP); el cálculo no valida ni formatea.
+Agregar una regla de redondeo DEBE ser posible sin modificar las clases existentes (OCP).
+Cualquier implementación de una interfaz DEBE poder sustituir a otra sin que quien la usa
+compruebe su tipo (LSP). Las interfaces DEBEN ser pequeñas y sus consumidores no dependerán
+de métodos que no usan (ISP). La presentación DEBE depender de abstracciones del dominio,
+nunca de clases concretas de datos (DIP). Estas reglas mantienen los cambios localizados y
+permiten sustituir políticas sin acoplar a sus consumidores.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Arquitectura por capas
+El código DEBE organizarse en `lib/presentation`, `lib/domain` y `lib/data`, con la dirección
+de dependencias `presentation -> domain <- data`. `lib/domain/` DEBE ser Dart puro y no puede
+importar `package:flutter`. `main.dart` es el único lugar donde se instancian implementaciones
+concretas. Esto mantiene las reglas de negocio independientes del framework y de sus
+adaptadores.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Seguridad
+Nunca se guardan secretos ni claves de API en el repositorio. Así se evita exponer
+credenciales mediante el historial o la distribución del código.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Calidad y pruebas
+Toda funcionalidad crítica DEBE tener pruebas ejecutables. Los criterios de aceptación de
+cada spec DEBEN convertirse en pruebas ejecutables. Esto hace verificables los
+comportamientos exigidos antes de dar por cumplida una funcionalidad.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Regla de la materia
+Toda función generada por el agente DEBE poder ser explicada por el estudiante: qué hace,
+por qué existe, qué recibe, qué devuelve y qué errores produce. Esto mantiene el trabajo
+alineado con el aprendizaje y permite revisar la lógica de forma consciente.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Restricciones del proyecto
+La aplicación es Flutter y consta de una sola pantalla. El código DEBE usar null safety y
+nombres en español. No se añaden paquetes externos ni se modifica `pubspec.yaml` sin avisar
+antes.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Flujo de desarrollo y revisión
+Antes de aceptar un cambio, la revisión DEBE comprobar los principios aplicables y que las
+pruebas ejecutables cubran las funcionalidades críticas y los criterios de aceptación de
+cada spec.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+Esta constitución rige las decisiones y revisiones del proyecto. Toda enmienda DEBE indicar
+su motivo y las secciones afectadas, actualizar la versión y la fecha de modificación, y
+revisarse frente a los principios aplicables y las pruebas.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+La versión sigue SemVer: MAJOR para retirar o redefinir de forma incompatible un principio;
+MINOR para añadir un principio o sección, o ampliar materialmente una regla; PATCH para
+aclaraciones y cambios editoriales no semánticos. Las revisiones DEBEN verificar el
+cumplimiento de esta constitución.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): fecha original desconocida | **Last Amended**: 2026-10-01
