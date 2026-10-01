@@ -2,8 +2,8 @@
 
 | | rama vibe | rama sdd |
 |---|---|---|
-| Iteraciones (veces que le tuviste que volver a pedir algo) | | |
-| Casos de aceptación que cumple (0–6) | | |
+| Iteraciones (veces que le tuviste que volver a pedir algo) | | | 1
+| Casos de aceptación que cumple (0–6) | | | 
 | Pruebas automatizadas que pasan | | |
 | Archivos en `lib/` | | |
 | Líneas de código en `lib/` | | |
