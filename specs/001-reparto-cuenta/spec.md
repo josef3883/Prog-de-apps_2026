@@ -56,9 +56,9 @@ Como persona que usa la app, quiero calcular la cuenta sin conexión para poder 
 
 ### Edge Cases
 
-- El monto vacío, negativo o no numérico se considera inválido; al tocar «Calcular» se muestra «Monto inválido» y no se muestra un resultado anterior como si correspondiera a la nueva entrada.
-- La cantidad de personas debe ser un entero mayor o igual que uno. Cero muestra «Debe haber al menos una persona»; un valor no entero o no numérico muestra «Número de personas inválido».
-- La propina debe ser un porcentaje numérico entre 0 y 100, inclusive; cualquier otro valor muestra «Propina inválida».
+- El monto acepta punto o coma como separador decimal, no admite separadores de miles y puede tener hasta dos decimales. Si está vacío, es negativo, no numérico, no finito o excede dos decimales, al tocar «Calcular» se muestra «Monto inválido» y no queda visible un resultado anterior.
+- La cantidad de personas debe ser un entero positivo. Cero o un valor negativo muestra «Debe haber al menos una persona»; un valor no entero o no numérico muestra «Número de personas inválido».
+- La propina acepta punto o coma como separador decimal, no admite separadores de miles y debe ser numérica, finita, de 0 a 100 inclusive y tener hasta dos decimales. Si no cumple estas condiciones, se muestra «Propina inválida» y no queda visible ningún resultado.
 - Si el importe por persona ya es un número entero, el modo hacia arriba conserva ese importe y lo muestra con dos decimales.
 - Al cambiar datos después de calcular, se requiere volver a tocar «Calcular» para obtener un resultado actualizado.
 
@@ -70,12 +70,13 @@ Como persona que usa la app, quiero calcular la cuenta sin conexión para poder 
 - **FR-002**: La app MUST ofrecer los modos de redondeo exacto y hacia arriba al entero monetario siguiente.
 - **FR-003**: La app MUST calcular únicamente cuando la persona toque «Calcular».
 - **FR-004**: El cálculo MUST sumar al monto la propina porcentual y dividir el total entre la cantidad de personas.
-- **FR-005**: En modo exacto, el importe por persona MUST mostrarse con dos decimales, redondeado al centésimo más cercano.
+- **FR-005**: En modo exacto, el importe por persona MUST mostrarse con dos decimales, redondeado al centésimo más cercano; si queda exactamente a mitad entre centésimos, MUST redondearse hacia arriba.
 - **FR-006**: En modo hacia arriba, el importe por persona MUST redondearse hacia arriba al entero monetario siguiente y mostrarse con dos decimales.
 - **FR-007**: Para cero personas, la app MUST mostrar «Debe haber al menos una persona» y no mostrar un resultado.
-- **FR-008**: Para un monto no numérico como «abc», la app MUST mostrar «Monto inválido» y no mostrar un resultado.
-- **FR-009**: Para una cantidad de personas no entera o no numérica, la app MUST mostrar «Número de personas inválido»; para una propina no numérica o fuera del rango de 0 a 100, MUST mostrar «Propina inválida». En ambos casos la app MUST ocultar cualquier resultado.
+- **FR-008**: Para un monto vacío, negativo, no finito, no numérico como «abc», con separadores de miles o con más de dos decimales, la app MUST mostrar «Monto inválido» y ocultar cualquier resultado.
+- **FR-009**: Para cero o menos personas, la app MUST mostrar «Debe haber al menos una persona»; para una cantidad no entera o no numérica, MUST mostrar «Número de personas inválido». Para una propina no numérica, no finita, con separadores de miles, con más de dos decimales o fuera del rango de 0 a 100, MUST mostrar «Propina inválida». En todos los casos la app MUST ocultar cualquier resultado.
 - **FR-010**: El cálculo MUST funcionar sin conexión, sin enviar solicitudes de red ni guardar la cuenta en una base de datos.
+- **FR-011**: El monto y la propina MUST aceptar punto o coma como separador decimal, con hasta dos cifras decimales, y MUST rechazar separadores de miles.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -87,14 +88,16 @@ Como persona que usa la app, quiero calcular la cuenta sin conexión para poder 
 ### Measurable Outcomes
 
 - **SC-001**: Los seis escenarios de aceptación proporcionados producen el importe o mensaje especificado en 6 de 6 ejecuciones.
-- **SC-002**: Para el 100 % de las entradas inválidas probadas, la app muestra el mensaje de error correspondiente y no presenta ningún resultado por persona.
+- **SC-002**: El 100 % de las categorías de entrada inválida enumeradas en Edge Cases tiene al menos una prueba ejecutable que verifica el mensaje correspondiente y la ausencia de resultado.
 - **SC-003**: En una medición con cronómetro, el importe por persona aparece antes de un segundo desde que se toca «Calcular» con datos válidos.
 - **SC-004**: El 100 % de los resultados válidos identifica claramente el importe como «por persona» y lo muestra con exactamente dos decimales.
 
 ## Assumptions
 
 - La propina se calcula sobre el monto total antes de dividirlo entre las personas.
-- El modo exacto conserva la mayor precisión durante el cálculo y presenta el importe individual a dos decimales, redondeado al centésimo más cercano.
+- Los montos y porcentajes admiten punto o coma decimal y hasta dos decimales; no se admiten separadores de miles.
+- El importe de propina se redondea al centésimo más cercano, con empates hacia arriba. El modo exacto conserva la mayor precisión del reparto y presenta el importe individual al centésimo más cercano, también con empates hacia arriba.
 - El modo hacia arriba se aplica al importe final por persona después de añadir la propina y dividir; un importe ya entero no aumenta.
+- No se fija una moneda ni se muestra un símbolo; el importe se presenta como un número con dos decimales.
 - Se aceptan montos no negativos y porcentajes de propina de 0 a 100 inclusive; personas debe ser un entero positivo.
 - La cuenta solo se utiliza durante la sesión actual y no se persiste.
