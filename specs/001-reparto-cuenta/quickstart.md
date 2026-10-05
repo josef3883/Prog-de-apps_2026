@@ -34,3 +34,7 @@ flutter run
 ## Revisión de comprensión
 
 Antes de aceptar la implementación, el estudiante explica cada función generada en `lib/domain/`, `lib/data/` y `lib/presentation/`: qué hace, por qué existe, qué recibe, qué devuelve y qué errores produce. Si alguna función no se puede explicar, simplificarla o aclarar su contrato y repetir la revisión.
+
+## Resultado de verificación offline
+
+El análisis estático de `lib/` no encontró clientes de red, persistencia ni servicios externos. `test/presentation/offline_test.dart` pasó con un cálculo válido y sin servicios configurados. La comprobación manual con la conectividad del dispositivo desactivada queda pendiente de ejecutar en el entorno de entrega.
