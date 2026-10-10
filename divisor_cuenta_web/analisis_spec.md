@@ -99,3 +99,85 @@ elimina requisitos independientes de la spec.
 No se identifican principios inventados. La versión 1.0.0 es la constitución inicial
 del proyecto web, no una enmienda de la constitución independiente de Flutter.
 Esta verificación documental no certifica el cumplimiento del código actual.
+
+## 8.1 La spec: evidencia de copia y reutilización
+
+Verificación realizada el 2026-10-09. El feature activo se resolvió desde
+`.specify/feature.json`: `specs/001-reparto-cuenta`; la variable de entorno
+SPECIFY_FEATURE_DIRECTORY no estaba definida. La ruta real de Flutter es
+`../division_cuenta/specs/001-reparto-cuenta/spec.md`, no la ruta de ejemplo del ejercicio.
+
+Comando ejecutado desde la raíz de divisor_cuenta_web, con ambas rutas resueltas:
+
+```powershell
+git diff --no-index -- "..\division_cuenta\specs\001-reparto-cuenta\spec.md" `
+  ".\specs\001-reparto-cuenta\spec.md"
+```
+
+Evidencia observada, sin sustituir una diferencia por una descripción:
+
+```text
+stdout: vacío (0 bytes)
+stderr: vacío
+código de salida: 0
+```
+
+Los dos archivos actuales tienen exactamente el mismo SHA-256:
+
+```text
+2E7E20D862FFA432CD36479C5042803673903125FC6DE56B3D3709C09DBC3220
+```
+
+Se conservaron las instantáneas de ambos archivos comparados, la salida vacía del diff,
+el registro JSON con rutas absolutas y el blob inicial de React extraído del primer
+commit que incorporó la spec, `219882fd743eb42c07e4e8fd6739f83f3f313bd5`.
+El diff entre Flutter y ese blob inicial también devuelve código 0 y salida estándar
+vacía. Git avisa únicamente de LF/CRLF para el blob histórico. Su hash de bytes difiere
+del archivo de trabajo por esa conversión; el texto es igual al normalizar LF/CRLF.
+La igualdad de bytes se afirma entre los dos archivos actuales, no entre el blob LF y
+el archivo CRLF. La evidencia se obtuvo ahora; no se presenta como captura realizada
+en la fecha del commit inicial.
+
+Archivos guardados en
+[evidencia-spec](specs/001-reparto-cuenta/evidencia-spec/README.md).
+
+### Estimación de reutilización
+
+Se aplica el inventario de la sección 1 de `../division_cuenta/analisis_spec.md`,
+conservado también en
+[inventario-enunciados.md](specs/001-reparto-cuenta/evidencia-spec/inventario-enunciados.md).
+Cada obligación independiente o escenario cuenta como un enunciado; se incluyen entrada,
+historias, escenarios, casos límite, FR, entidades, SC y supuestos. Las repeticiones se
+cuentan en cada aparición; se excluyen títulos y metadatos. Este conteo es independiente
+de las 44 reglas constitucionales comparadas anteriormente.
+
+| Resultado | Enunciados |
+|---|---:|
+| Reutilizados sin cambios (QUÉ / Intacto) | 106 |
+| Dependientes de Flutter que necesitan sustitución (CÓMO) | 0 |
+| Mixtos que necesitan adaptación | 0 |
+| Total | 106 |
+
+**Reutilización estimada = 106 / 106 × 100 = 100 %.** Además del análisis semántico,
+el diff vacío confirma que el documento completo se copió sin cambios textuales.
+
+### Aplicación del protocolo de adaptación
+
+Se revisaron plan.md, research.md y validacion.md del feature React. No se identificó
+un enunciado de la spec que prescriba Flutter, Dart, widgets, Riverpod o pubspec.yaml y
+bloquee la migración. Las referencias tecnológicas que requirieron adaptación pertenecen
+a la constitución y al diseño, no a esta spec.
+
+El plan React se elaboró con la copia original y la implementación preservó esa copia.
+SC-001 cuenta seis escenarios aunque hay siete; la precedencia de errores para personas
+negativas fraccionarias necesitó una decisión documentada; la primera carga offline no
+tiene procedimiento definido. Son problemas de consistencia o precisión del contrato,
+no dependencias de Flutter ni enunciados CÓMO que deban eliminarse para usar React.
+El límite de recarga remota offline continúa explícito en la validación: reutilización
+del texto no significa garantía de comportamientos que no se implementaron o probaron.
+
+Por tanto, se conserva la copia inicial y su evidencia, pero no corresponde corregir
+un enunciado, producir un antes/después de adaptación ni crear un commit de corrección.
+Si aparece después un bloqueo específico de Flutter, se documentará aquí primero el
+texto original, su carácter CÓMO y el intento de planificar con él; solo posteriormente
+se realizará la adaptación en un commit separado, preservando estas instantáneas.

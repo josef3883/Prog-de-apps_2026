@@ -1,0 +1,116 @@
+diff --git "a/C:\\dev\\Prog-de-apps_2026\\division_cuenta\\.specify\\memory\\constitution.md" "b/C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\.specify\\memory\\constitution.md"
+index 541f8cd..8758f15 100644
+--- "a/C:\\dev\\Prog-de-apps_2026\\division_cuenta\\.specify\\memory\\constitution.md"
++++ "b/C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\.specify\\memory\\constitution.md"
+@@ -1,63 +1,72 @@
+-<!--
++﻿<!--
+ Sync Impact Report
+ Version: scaffold sin ratificar -> 1.0.0 (constitución inicial)
+-Modified principles: constitución inicial; definidos I. Calidad de código (SOLID), II. Arquitectura por capas, III. Seguridad, IV. Calidad y pruebas, V. Regla de la materia
+-Added sections: Restricciones del proyecto; Flujo de desarrollo y revisión
+-Removed sections: ninguna
+-Follow-up TODOs: fecha original de ratificación desconocida; completar al ratificar
++Modified principles: definidos I. Calidad de código, II. Arquitectura, III. Seguridad,
++IV. Calidad y pruebas, V. Regla de la materia.
++Added sections: Alcance; Flujo de desarrollo y revisión; Governance.
++Removed sections: ninguna regla vigente; retirados ejemplos del scaffold.
++Follow-up TODOs: ninguno.
++Informe temporal de revisión, no normativo. Comparación con Flutter: analisis_spec.md.
+ -->
+-# División de Cuenta Constitution
++# divisor_cuenta_web Constitution
+ 
+ ## Core Principles
+ 
+ ### I. Calidad de código (SOLID)
+-Cada clase DEBE tener una sola razón de cambio (SRP); el cálculo no valida ni formatea.
+-Agregar una regla de redondeo DEBE ser posible sin modificar las clases existentes (OCP).
+-Cualquier implementación de una interfaz DEBE poder sustituir a otra sin que quien la usa
+-compruebe su tipo (LSP). Las interfaces DEBEN ser pequeñas y sus consumidores no dependerán
+-de métodos que no usan (ISP). La presentación DEBE depender de abstracciones del dominio,
+-nunca de clases concretas de datos (DIP). Estas reglas mantienen los cambios localizados y
+-permiten sustituir políticas sin acoplar a sus consumidores.
+-
+-### II. Arquitectura por capas
+-El código DEBE organizarse en `lib/presentation`, `lib/domain` y `lib/data`, con la dirección
+-de dependencias `presentation -> domain <- data`. `lib/domain/` DEBE ser Dart puro y no puede
+-importar `package:flutter`. `main.dart` es el único lugar donde se instancian implementaciones
+-concretas. Esto mantiene las reglas de negocio independientes del framework y de sus
+-adaptadores.
++
++El código DEBE respetar SOLID:
++
++- **SRP**: una función o módulo, una razón de cambio. El cálculo no valida ni formatea.
++- **OCP**: agregar una nueva regla de redondeo no obliga a editar los módulos que ya existen.
++- **LSP**: cualquier implementación de la interfaz de redondeo puede sustituir a otra
++  sin que quien la usa pregunte de qué tipo es.
++- **ISP**: interfaces pequeñas; nadie depende de funciones que no usa.
++- **DIP**: `presentation` depende de abstracciones del `domain`, nunca de implementaciones
++  concretas de `data`.
++
++### II. Arquitectura
++
++- Capas: `src/presentation` / `src/domain` / `src/data`.
++- Regla de dependencia: `presentation -> domain <- data`.
++- `src/domain/` NO importa `react` ni nada del DOM: es JavaScript puro.
++- `src/main.jsx` es el ÚNICO lugar donde se instancian implementaciones concretas.
+ 
+ ### III. Seguridad
+-Nunca se guardan secretos ni claves de API en el repositorio. Así se evita exponer
+-credenciales mediante el historial o la distribución del código.
++
++Nunca guardar secretos ni API keys en el repositorio.
+ 
+ ### IV. Calidad y pruebas
+-Toda funcionalidad crítica DEBE tener pruebas ejecutables. Los criterios de aceptación de
+-cada spec DEBEN convertirse en pruebas ejecutables. Esto hace verificables los
+-comportamientos exigidos antes de dar por cumplida una funcionalidad.
++
++- Toda funcionalidad crítica DEBE tener pruebas.
++- Los criterios de aceptación de la spec DEBEN convertirse en pruebas ejecutables.
+ 
+ ### V. Regla de la materia
+-Toda función generada por el agente DEBE poder ser explicada por el estudiante: qué hace,
+-por qué existe, qué recibe, qué devuelve y qué errores produce. Esto mantiene el trabajo
+-alineado con el aprendizaje y permite revisar la lógica de forma consciente.
+ 
+-## Restricciones del proyecto
+-La aplicación es Flutter y consta de una sola pantalla. El código DEBE usar null safety y
+-nombres en español. No se añaden paquetes externos ni se modifica `pubspec.yaml` sin avisar
+-antes.
++Toda función generada por el agente DEBE poder explicarla el estudiante: qué hace,
++por qué existe, qué recibe, qué devuelve y qué errores produce.
++
++## Alcance
++
++Los cinco principios anteriores son los proporcionados por el usuario. No se incorporan
++las restricciones adicionales de Flutter. La comparación en `analisis_spec.md` es
++informativa y no añade requisitos.
+ 
+ ## Flujo de desarrollo y revisión
+-Antes de aceptar un cambio, la revisión DEBE comprobar los principios aplicables y que las
+-pruebas ejecutables cubran las funcionalidades críticas y los criterios de aceptación de
+-cada spec.
++
++Se conserva el flujo de revisión de Flutter: antes de aceptar un cambio, la revisión
++DEBE comprobar los principios aplicables y que las pruebas cubran las funcionalidades
++críticas y los criterios de aceptación de la spec.
+ 
+ ## Governance
+-Esta constitución rige las decisiones y revisiones del proyecto. Toda enmienda DEBE indicar
+-su motivo y las secciones afectadas, actualizar la versión y la fecha de modificación, y
+-revisarse frente a los principios aplicables y las pruebas.
++
++Se conserva la gobernanza documental de Flutter: esta constitución rige las decisiones
++y revisiones del proyecto. Toda enmienda DEBE indicar su motivo y las secciones afectadas,
++actualizar la versión y la fecha de modificación, y revisarse frente a los principios
++aplicables y las pruebas.
+ 
+ La versión sigue SemVer: MAJOR para retirar o redefinir de forma incompatible un principio;
+ MINOR para añadir un principio o sección, o ampliar materialmente una regla; PATCH para
+ aclaraciones y cambios editoriales no semánticos. Las revisiones DEBEN verificar el
+ cumplimiento de esta constitución.
+ 
+-**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): fecha original desconocida | **Last Amended**: 2026-10-01
++**Version**: 1.0.0 | **Ratified**: 2026-10-09 | **Last Amended**: 2026-10-09

@@ -1,0 +1,29 @@
+{
+  "fecha": "2026-10-09",
+  "featureDirectory": "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta",
+  "flutterSpec": "C:\\dev\\Prog-de-apps_2026\\division_cuenta\\specs\\001-reparto-cuenta\\spec.md",
+  "reactSpec": "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\spec.md",
+  "comando": [
+    "git",
+    "diff",
+    "--no-index",
+    "--",
+    "C:\\dev\\Prog-de-apps_2026\\division_cuenta\\specs\\001-reparto-cuenta\\spec.md",
+    "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\spec.md"
+  ],
+  "codigoSalida": 0,
+  "stdoutBytes": 0,
+  "stderr": "",
+  "flutterSHA256": "2E7E20D862FFA432CD36479C5042803673903125FC6DE56B3D3709C09DBC3220",
+  "reactSHA256": "2E7E20D862FFA432CD36479C5042803673903125FC6DE56B3D3709C09DBC3220",
+  "primerCommit": "219882fd743eb42c07e4e8fd6739f83f3f313bd5",
+  "primerCommitSHA256": "7DF2FA34A517F2AF6167AB5C1EBB068015EFD8689E5ACEBC099B2424AE15E56E",
+  "mismoTextoQuePrimerCommit": true,
+  "diffPrimerCommit": {
+    "codigoSalida": 0,
+    "stdoutBytes": 0,
+    "stderr": "warning: in the working copy of 'C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\evidencia-spec\\react-primer-commit.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  "enunciados": 106,
+  "intactos": 106
+}

@@ -1,0 +1,54 @@
+{
+  "fecha": "2026-10-09",
+  "feature": "specs/001-reparto-cuenta",
+  "comparaciones": [
+    {
+      "artefacto": "spec",
+      "comando": [
+        "git",
+        "diff",
+        "--no-index",
+        "--",
+        "C:\\dev\\Prog-de-apps_2026\\division_cuenta\\specs\\001-reparto-cuenta\\spec.md",
+        "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\spec.md"
+      ],
+      "codigoSalida": 0,
+      "stdoutBytes": 0,
+      "stderr": "",
+      "sha256Flutter": "2e7e20d862ffa432cd36479c5042803673903125fc6de56b3d3709c09dbc3220",
+      "sha256React": "2e7e20d862ffa432cd36479c5042803673903125fc6de56b3d3709c09dbc3220"
+    },
+    {
+      "artefacto": "constitution",
+      "comando": [
+        "git",
+        "diff",
+        "--no-index",
+        "--",
+        "C:\\dev\\Prog-de-apps_2026\\division_cuenta\\.specify\\memory\\constitution.md",
+        "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\.specify\\memory\\constitution.md"
+      ],
+      "codigoSalida": 1,
+      "stdoutBytes": 6388,
+      "stderr": "warning: in the working copy of 'C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\.specify\\memory\\constitution.md', LF will be replaced by CRLF the next time Git touches it\n",
+      "sha256Flutter": "64c400b13c34ad16fcb5b10bdcced0dbf00ea22a12665561a08f44cfff08c9f1",
+      "sha256React": "211562f624052ef1860b0e12a144cfe52e2ce27dbe0e77ee4ff5f411dfa336ba"
+    },
+    {
+      "artefacto": "plan",
+      "comando": [
+        "git",
+        "diff",
+        "--no-index",
+        "--",
+        "C:\\dev\\Prog-de-apps_2026\\division_cuenta\\specs\\001-reparto-cuenta\\plan.md",
+        "C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\plan.md"
+      ],
+      "codigoSalida": 1,
+      "stdoutBytes": 12740,
+      "stderr": "warning: in the working copy of 'C:\\dev\\Prog-de-apps_2026\\divisor_cuenta_web\\specs\\001-reparto-cuenta\\plan.md', LF will be replaced by CRLF the next time Git touches it\n",
+      "sha256Flutter": "8c9d0ae22a6a53f976a747cbe402af55363c7402570ae611caa64533f4587663",
+      "sha256React": "de64028c200a7605b8501f08ed9b5da939ca7f01caeb8eedc35200fa102ee29a"
+    }
+  ]
+}
