@@ -43,7 +43,7 @@ SC-001 dice 6/6, pero esta tabla cubre los siete escenarios existentes sin edita
 | FR-009, SC-002 | Propina abc/Infinity/vacía/-1/100.01/1,000/1.000/1,234.56/1.234,56/0.001: Propina inválida, sin resultado previo. |
 | FR-011 | Aceptar punto/coma y una/dos cifras decimales en ambos campos; comprobar conversión exacta. |
 | Assumptions | Aceptar monto cero, una persona, propina 0 y 100; no imponer máximos monetarios; comprobar valores superiores a Number.MAX_SAFE_INTEGER con BigInt. |
-| SC-003 | Vitest verifica el resultado al finalizar act tras Calcular; navegador registra con cronómetro que aparece antes de un segundo. No sustituir tiempo real de UI por un benchmark del dominio. |
+| SC-003 | Vitest mide hasta el resultado tras act y exige menos de 1000 ms. El navegador mide desde el clic hasta dos frames de renderizado mediante performance.now, comprueba la salida y exige menos de 1000 ms. No sustituir tiempo real de UI por un benchmark del dominio. |
 | SC-004 | Toda salida válida de la matriz tiene exactamente dos decimales, «por persona» y ningún símbolo monetario. |
 | Constitución | Misma batería de contrato para estrategias; cálculo sin validación/formato; dependencia inyectada; dominio sin React/DOM y presentación sin data. |
 

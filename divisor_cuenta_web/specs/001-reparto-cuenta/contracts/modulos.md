@@ -17,7 +17,7 @@ no contiene validación redundante ni transforma texto inválido en errores de p
 | presentation/formateadorMoneda.js | formatearMoneda(importeCentavos) recibe bigint válido y devuelve string con punto y exactamente dos decimales, sin símbolo ni agrupación. No redondea. | Sin errores para valores del contrato. |
 | presentation/useDivisor.js | useDivisor(dependencias) recibe funciones y catálogo; retorna entradas, modo, modos, resultadoFormateado, error, cambiarCampo, cambiarModo y calcular. Coordina useState, no importa data. | Publica errores de validarEntrada. No crea estrategias ni los sustituye por errores de usuario si hay un fallo de programación. |
 | presentation/PantallaDivisor.jsx | PantallaDivisor({ dependencias }) usa el hook y representa campos, opciones, botón, mensaje y resultado por persona. | Expone los errores del hook. No valida ni calcula por cuenta propia. |
-| main.jsx | Descubre exportaciones de estrategias, construye objetos { aplicar }, catálogo/dependencias y monta la pantalla con createRoot. | Metadatos duplicados o contrato ausente son errores de composición, identificados durante tests/build, no entrada del usuario. |
+| main.jsx | Descubre exportaciones de estrategias, construye objetos { aplicar }, catálogo/dependencias y monta la pantalla con createRoot. | Metadatos duplicados o contrato ausente son errores de composición, identificados por tests explícitos y al iniciar la aplicación, no por el build por sí solo ni como entrada del usuario. |
 
 ## Semántica numérica
 

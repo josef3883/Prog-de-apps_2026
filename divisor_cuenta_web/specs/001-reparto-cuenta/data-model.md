@@ -55,8 +55,8 @@ validarEntrada recibe los tres strings y retorna una unión etiquetada:
 | Condición | Mensaje |
 |---|---|
 | Monto vacío, negativo, no numérico/no finito, agrupado o con más de dos decimales | Monto inválido |
-| Personas enteras cero o negativas | Debe haber al menos una persona |
-| Personas vacías, no numéricas, no finitas o no enteras | Número de personas inválido |
+| Personas numéricas cero o negativas, incluso -0.5; prioridad de FR-009 | Debe haber al menos una persona |
+| Personas vacías, no numéricas, no finitas o positivas no enteras | Número de personas inválido |
 | Propina vacía, no numérica/no finita, agrupada, con más de dos decimales o fuera de 0..100 | Propina inválida |
 
 Se devuelve el primer error en orden monto → personas → propina. Los errores esperables

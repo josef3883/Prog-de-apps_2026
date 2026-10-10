@@ -1,16 +1,15 @@
 ﻿# Quickstart de validación
 
-Este documento describe la ejecución prevista después de implementar el feature.
-/speckit-plan no instaló dependencias, no creó tests ni modificó la aplicación.
+El feature está implementado. Resultados y limitaciones observados:
+[validacion.md](validacion.md). Este documento permite repetir sus comprobaciones.
 
 ## Prerrequisitos y preparación
 
 - Node 24.20.0 disponible en el entorno inspeccionado y npm.
-- Proyecto React/Vite existente. En implementación se añadirán Vitest y jsdom como
-  dependencias de desarrollo compatibles, y se registrarán en package-lock.json.
-- Scripts previstos: test = vitest; test:run = vitest run; dev/build/lint/preview se conservan.
+- Proyecto React/Vite existente; Vitest y jsdom están registrados en package-lock.json.
+- Scripts: test = vitest; test:run = vitest run; dev/build/lint/preview se conservan.
 
-Instalación inicial durante implementación:
+Dependencias de pruebas incorporadas durante implementación:
 
 ```powershell
 npm install -D vitest jsdom
@@ -26,7 +25,7 @@ npm run build
 npm run preview -- --host 127.0.0.1
 ```
 
-No ejecutar estas instrucciones como si test:run ya existiera en el scaffold actual.
+En PowerShell puede usarse npm.cmd si npm.ps1 está bloqueado por la política de scripts.
 La instalación necesita acceso al registro npm; la ejecución funcional posterior no.
 Vitest utiliza Node para dominio/data/formato; las pruebas JSX de hook/pantalla seleccionan
 jsdom. La configuración reutiliza el plugin React de vite.config.js. No añadir una
@@ -53,6 +52,17 @@ Editar después de calcular: la salida se oculta y no aparece otra hasta volver 
 Para SC-003, iniciar un cronómetro al pulsar Calcular y detenerlo cuando aparezca el
 resultado; debe tardar menos de un segundo. Registrar navegador, dispositivo y medición.
 La comprobación automática de actualización del DOM complementa esta medición explícita.
+Vitest también verifica menos de 1000 ms hasta el resultado. Para repetir el cronómetro
+real de navegador y la desconexión, con preview en el puerto 4173:
+
+```powershell
+npm.cmd install --prefix .qa-tools --no-save --package-lock=false playwright
+node scripts/validar-navegador.mjs
+```
+
+Requiere Chrome instalado. Playwright es herramienta temporal aislada, no dependencia
+de la aplicación. El harness mide desde clic hasta dos frames y verifica el texto;
+guarda JSON y capturas en .qa-tools/. No es una medición humana manual.
 
 Para offline, usar el build de preview, terminar de cargar sus recursos y abrir Network.
 Activar Offline, limpiar el registro de solicitudes, completar una cuenta y calcular.
@@ -72,7 +82,8 @@ Para cada función generada, el estudiante explica propósito, motivo, entradas,
 esperables de entrada retornan datos; el cálculo asume Cuenta válida. No se ocultan fallos
 de programación bajo mensajes como Monto inválido.
 
-## Siguiente fase
+## Estado
 
-Ejecutar /speckit-tasks para convertir el diseño en tareas. La implementación y las
-pruebas reales pertenecen a la fase posterior; este plan no declara que ya hayan pasado.
+La implementación y las comprobaciones están registradas en validacion.md y tasks.md.
+La spec se conserva intacta, incluida la discrepancia de SC-001. No se afirma comprensión
+personal del estudiante: se proporcionan explicaciones y casos para su revisión.

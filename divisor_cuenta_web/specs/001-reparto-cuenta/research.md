@@ -73,8 +73,10 @@ evita confundir un resultado anterior con datos recién editados.
 posibles, pero requieren más estado o una indicación adicional no necesaria.
 Gramática: recortar espacios exteriores; monto/propina con dígitos y opcionalmente punto
 o coma seguido de una o dos cifras; sin agrupación ni exponentes. Personas con signo
-opcional y dígitos enteros; valores <=0 usan el mensaje específico. Un negativo decimal
-no es un entero y recibe Número de personas inválido. No se añaden máximos arbitrarios.
+opcional y dígitos enteros; valores <=0 usan el mensaje específico. En implementación se
+resuelve el hallazgo I2 dando prioridad a FR-009: un negativo decimal, incluido -0.5,
+recibe «Debe haber al menos una persona». Positivos fraccionarios reciben
+«Número de personas inválido». No se añaden máximos arbitrarios ni se modifica la spec.
 
 SC-001 enumera seis ejecuciones frente a siete escenarios: se prueba el conjunto completo
 sin editar la spec. No quedan decisiones técnicas pendientes para esta fase.
