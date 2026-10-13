@@ -35,7 +35,11 @@ void main() {
     (campo: 'tip-percent', valor: 'Infinity', mensaje: 'Propina inválida'),
     (campo: 'tip-percent', valor: '1,000', mensaje: 'Propina inválida'),
     (campo: 'tip-percent', valor: '1.001', mensaje: 'Propina inválida'),
-    (campo: 'tip-percent', valor: '100.01', mensaje: 'Propina inválida'),
+    (
+      campo: 'tip-percent',
+      valor: '100.01',
+      mensaje: 'La propina no puede superar el 100%',
+    ),
     (campo: 'tip-percent', valor: 'abc', mensaje: 'Propina inválida'),
   ];
 

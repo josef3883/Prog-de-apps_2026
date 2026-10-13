@@ -4,6 +4,7 @@ import 'package:aplicacion7/domain/calcular_division.dart';
 import 'package:aplicacion7/domain/cuenta.dart';
 import 'package:aplicacion7/domain/estrategia_redondeo.dart';
 import 'package:aplicacion7/domain/validar_entrada.dart';
+import 'package:aplicacion7/presentation/divisor_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'casos_de_prueba.dart';
@@ -120,9 +121,8 @@ EstrategiaRedondeo _crearEstrategia(String modo) {
   }
 }
 
-String _mensajeError(ErrorValidacion error) => switch (error) {
-  ErrorValidacion.montoInvalido => 'Monto inválido',
-  ErrorValidacion.debeHaberUnaPersona => 'Debe haber al menos una persona',
-  ErrorValidacion.numeroPersonasInvalido => 'Número de personas inválido',
-  ErrorValidacion.propinaInvalida => 'Propina inválida',
-};
+String _mensajeError(ErrorValidacion error) => DivisorController(
+  validarEntrada: const ValidarEntrada(),
+  calcularDivision: const CalcularDivision(),
+  opcionesRedondeo: const [],
+).mensajeError(error);
