@@ -33,6 +33,7 @@ class DivisorController {
     ErrorValidacion.debeHaberUnaPersona => 'Debe haber al menos una persona',
     ErrorValidacion.numeroPersonasInvalido => 'Número de personas inválido',
     ErrorValidacion.propinaInvalida => 'Propina inválida',
+    ErrorValidacion.propinaSuperaLimite => 'La propina no puede superar el 100%',
   };
 
   EstadoCalculo calcular({

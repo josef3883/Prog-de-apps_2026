@@ -5,6 +5,7 @@ enum ErrorValidacion {
   debeHaberUnaPersona,
   numeroPersonasInvalido,
   propinaInvalida,
+  propinaSuperaLimite,
 }
 
 class ResultadoValidacion {
@@ -50,9 +51,14 @@ class ValidarEntrada {
     }
 
     final propinaPuntosBasicos = _leerCentimos(propina);
-    if (propinaPuntosBasicos == null || propinaPuntosBasicos > 10000) {
+    if (propinaPuntosBasicos == null) {
       return const ResultadoValidacion.invalida(
         ErrorValidacion.propinaInvalida,
+      );
+    }
+    if (propinaPuntosBasicos > 10000) {
+      return const ResultadoValidacion.invalida(
+        ErrorValidacion.propinaSuperaLimite,
       );
     }
 
