@@ -40,6 +40,32 @@ void main() {
     });
   }
 
+  test('una propina de 150% devuelve el mensaje exacto del limite', () {
+    final validacion = const ValidarEntrada().validar(
+      monto: '100',
+      personas: '4',
+      propina: '150',
+    );
+
+    expect(validacion.cuenta, isNull);
+    expect(validacion.error, isNotNull);
+    expect(
+      _mensajeError(validacion.error!),
+      equals('La propina no puede superar el 100%'),
+    );
+  });
+
+  test('una propina de 100% se permite sin error', () {
+    final validacion = const ValidarEntrada().validar(
+      monto: '100',
+      personas: '4',
+      propina: '100',
+    );
+
+    expect(validacion.error, isNull);
+    expect(validacion.esValida, isTrue);
+  });
+
   test('LSP: CalcularDivision recibe estrategias concretas sin if ni cast', () {
     const calculadora = CalcularDivision();
     const cuenta = Cuenta(
