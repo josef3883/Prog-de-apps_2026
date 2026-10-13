@@ -1,4 +1,5 @@
 import 'cuenta.dart';
+import 'puntos_basicos.dart';
 
 enum ErrorValidacion {
   montoInvalido,
@@ -56,7 +57,7 @@ class ValidarEntrada {
         ErrorValidacion.propinaInvalida,
       );
     }
-    if (propinaPuntosBasicos > 10000) {
+    if (propinaPuntosBasicos > puntosBasicosPorUnidad) {
       return const ResultadoValidacion.invalida(
         ErrorValidacion.propinaSuperaLimite,
       );

@@ -1,5 +1,6 @@
 import 'cuenta.dart';
 import 'estrategia_redondeo.dart';
+import 'puntos_basicos.dart';
 import 'resultado.dart';
 
 class CalcularDivision {
@@ -24,7 +25,7 @@ class CalcularDivision {
     final numerador =
         BigInt.from(cuenta.montoCentimos) *
         BigInt.from(cuenta.propinaPuntosBasicos);
-    final divisor = BigInt.from(10000);
+    final divisor = BigInt.from(puntosBasicosPorUnidad);
     final mitad = divisor ~/ BigInt.from(2);
 
     return ((numerador + mitad) ~/ divisor).toInt();
