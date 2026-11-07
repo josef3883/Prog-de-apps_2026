@@ -24,5 +24,3 @@ Usé el agente Copilot en VS Code con las herramientas MCP de `mcp-detective`: `
 2. Desde la raíz del repositorio, inicia el Inspector: `npx -y @modelcontextprotocol/inspector`.
 3. En el Inspector, agrega un servidor de tipo **STDIO** con comando `uv` y estos argumentos: `run --directory <ruta-absoluta-a-mcp-detective> --with mcp==2.3.0 python server.py`.
 4. Pulsa **Connect**; al conectar, el Inspector debe mostrar las herramientas `listar_casos`, `consultar_eventos` y `registrar_alerta`.
-
-No se necesitan tokens ni contraseñas para este servidor local por STDIO.
